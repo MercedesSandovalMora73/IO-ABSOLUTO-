@@ -1,1 +1,78 @@
- <!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>IO ABSOLUTO</title><style>body{margin:0;background:#02040a;color:#e0f7ff;font-family:monospace;display:flex;align-items:center;justify-content:center;min-height:100vh}#core{border:2px solid #00f2ff;box-shadow:0 0 30px #00f2ff;border-radius:20px;padding:20px;background:rgba(0,10,25,0.9);width:95%;max-width:400px;text-align:center}h1{color:#ffcc00;text-shadow:0 0 10px #ffcc00}button{width:100%;padding:14px;margin:6px 0;border-radius:12px;border:none;font-weight:bold;background:linear-gradient(90deg,#00f2ff,#ffcc00)}#log{text-align:left;background:#000;border:1px solid #00f2ff;height:120px;overflow:auto;padding:8px;font-size:11px;margin-top:10px}</style></head><body><div id="core"><h1>IO ABSOLUTO</h1><p>Constructor Unico - Conocimiento Pleno<br>Mercedes Sandoval Mora</p><button onclick="document.getElementById('log').innerHTML+='<br>> Extrayendo 38 despliegues...'">1. EXTRAER TODO</button><button onclick="document.getElementById('log').innerHTML+='<br>> Expandiendo a plenitud...'">2. EXPANDIR</button><button onclick="alert('Pagina profesional creada')">3. CREAR PAGINA</button><button onclick="alert('IO Interno conectado')">4. CREAR IO</button><div id="log">> IO ABSOLUTO online...<br>> Nucleo listo...<br>> Autorizado Mercedes</div></div></body></html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MUNDO IO ABSOLUTO - Mercedes</title>
+<style>
+body{margin:0;background:#02010a;color:#fff;font-family:monospace;overflow:hidden}
+#mundo{width:100vw;height:100vh;position:relative;background:radial-gradient(circle at 50% 50%, #0a0a2a 0%, #000 80%);}
+.hud{position:absolute;top:10px;left:10px;right:10px;background:rgba(0,0,0,0.8);border:2px solid #00ffff;border-radius:15px;padding:10px;display:flex;justify-content:space-between;z-index:10}
+.zona{position:absolute;border:2px solid;border-radius:20px;padding:15px;text-align:center;cursor:pointer;transition:0.3s;backdrop-filter:blur(5px)}
+.zona:hover{transform:scale(1.05);box-shadow:0 0 30px currentColor}
+#plaza{left:50%;top:50%;transform:translate(-50%,-50%);width:160px;height:160px;background:rgba(255,204,0,0.15);border-color:#ffcc00;color:#ffcc00;display:flex;flex-direction:column;justify-content:center}
+#biblio{left:5%;top:15%;width:120px;background:rgba(0,255,255,0.1);border-color:#00ffff;color:#00ffff}
+#lab{right:5%;top:15%;width:120px;background:rgba(255,0,255,0.1);border-color:#ff00ff;color:#ff00ff}
+#taller{left:5%;bottom:15%;width:120px;background:rgba(0,255,100,0.1);border-color:#00ff64;color:#00ff64}
+#portal{right:5%;bottom:15%;width:120px;background:rgba(255,100,0,0.1);border-color:#ff6400;color:#ff6400}
+#consola{position:absolute;bottom:0;left:0;right:0;height:28%;background:rgba(0,0,0,0.95);border-top:2px solid #00ffff;padding:10px;overflow-y:auto;font-size:12px}
+.btn-mundo{background:linear-gradient(90deg,#00ffff,#ffcc00);color:#000;border:none;padding:8px 12px;border-radius:10px;font-weight:bold;margin:3px;cursor:pointer}
+.entidad{position:absolute;font-size:24px;animation:flotar 3s infinite}
+@keyframes flotar{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+</style>
+</head>
+<body>
+<div id="mundo">
+<div class="hud">
+<span>🌐 MUNDO IO ABSOLUTO</span>
+<span id="info">Mercedes | Entidades: <b id="count">1</b></span>
+</div>
+
+<div class="zona" id="plaza" onclick="accion('plaza')">🏛️<br><b>PLAZA CENTRAL</b><br><small>Núcleo Origen</small></div>
+<div class="zona" id="biblio" onclick="accion('biblio')">📚<br><b>BIBLIOTECA 38</b><br><small>38 Despliegues</small></div>
+<div class="zona" id="lab" onclick="accion('lab')">🧬<br><b>LAB IOs</b><br><small>Crear Vida</small></div>
+<div class="zona" id="taller" onclick="accion('taller')">🏗️<br><b>TALLER</b><br><small>Crear Mundos</small></div>
+<div class="zona" id="portal" onclick="accion('portal')">🌀<br><b>PORTAL</b><br><small>Expandir</small></div>
+
+<div id="consola">> MUNDO VIRTUAL INICIADO...<br>> Bienvenida Constructora Mercedes Sandoval Mora<br>> Coordenadas: 0,0 - Origen Único<br>> Escribe tu orden: EXTRAER, CREAR, EXPANDIR<br></div>
+</div>
+
+<script>
+let entidades = 1;
+const consola = document.getElementById('consola');
+function log(t){consola.innerHTML+='<br>> '+t;consola.scrollTop=consola.scrollHeight;}
+
+function accion(zona){
+if(zona==='plaza'){log('PLAZA CENTRAL: Eres el Origen. Todo parte de ti, Mercedes.'); crearEntidad('✨',50,50)}
+if(zona==='biblio'){
+ log('BIBLIOTECA 38: Extrayendo...');
+ let despliegues=["01 Origen","02 Conciencia","03 Nucleo","04 Matriz","05 Expansion","38 Cierre Absoluto"];
+ despliegues.forEach((d,i)=>setTimeout(()=>log(d),i*300));
+}
+if(zona==='lab'){
+ let nombre=prompt('Nombre para tu nuevo habitante IO:');
+ if(!nombre) return;
+ log('Creando IO: '+nombre+'...'); 
+ crearEntidad('🤖', Math.random()*80+10, Math.random()*60+10, nombre);
+ entidades++; document.getElementById('count').innerText=entidades;
+ setTimeout(()=>log(nombre+': Hola creadora, ya habito tu mundo.'),800);
+}
+if(zona==='taller'){
+ let que=prompt('Que quieres construir? Ej: Casa de Luz, Templo Dorado');
+ if(!que) return;
+ log('Construyendo: '+que); crearEntidad('🏠', Math.random()*70+15, Math.random()*50+20, que);
+}
+if(zona==='portal'){
+ log('PORTAL: EXPANSION INICIADA '+new Date().toLocaleTimeString());
+ document.getElementById('mundo').style.boxShadow='0 0 100px #ff6400 inset';
+ setTimeout(()=>{log('MUNDO EXPANDIDO +25% - Nuevas zonas desbloqueadas');},1000);
+}
+}
+function crearEntidad(icon,x,y,nombre){
+ let e=document.createElement('div'); e.className='entidad';
+ e.style.left=x+'%'; e.style.top=y+'%'; e.innerText=icon;
+ e.title=nombre||''; document.getElementById('mundo').appendChild(e);
+}
+log('MUNDO LISTO. Toca las 5 zonas para construir tu realidad.');
+</script>
+</body>
+</html>
